@@ -5,7 +5,7 @@ import { Fontisto, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as Linking from 'expo-linking';
 
 
-class Player extends Component{
+class Social extends Component{
 
     render(){
       return(
@@ -53,4 +53,4 @@ class Player extends Component{
   });
   
 
-  module.exports = Player
+  module.exports = Social
