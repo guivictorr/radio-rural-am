@@ -46,29 +46,23 @@ class Buttons extends Component{
 }
 
 const styles = StyleSheet.create({
+    playButtons:{
+      flex:1,
+      justifyContent:'flex-end',
+  },
     playButton:{
-        flex:1,
-        alignItems:'center',
         justifyContent:'center',
         flexDirection:'row',
-        backgroundColor:'#508bc7',
         padding: 16,
-        height:100,
-        maxWidth: '100%', 
+        backgroundColor:'#4980b8',
+        width:'100%'
     },
 
     playIcons:{
       margin:8,
     },
 
-
-    playButtons:{
-        flex:1,
-        flexDirection:'row',
-        alignItems:'flex-end',
-        justifyContent:'center',
-        
-    },
+    
   });
 
 module.exports = Buttons

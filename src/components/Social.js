@@ -10,7 +10,6 @@ class Social extends Component{
     render(){
       return(
         <View style={styles.playView}>
-          <View style={styles.social}>
             <TouchableOpacity style={{padding: 32,}} onPress={() => {Linking.openURL('http://api.whatsapp.com/send?phone=+5584996295274')}}>
               <Fontisto  name="whatsapp" size={42} color="white" />
             </TouchableOpacity>
@@ -26,7 +25,6 @@ class Social extends Component{
             <TouchableOpacity style={{padding: 32,}} onPress={() => {Linking.openURL('https://www.ruralam.com.br')}}>
               <MaterialCommunityIcons  name="web" size={44} color="white" />
             </TouchableOpacity>
-            </View>
           </View>
       )
     }
@@ -36,20 +34,12 @@ class Social extends Component{
 
     playView:{
       flex: 1,
-      flexDirection: 'row',
+      justifyContent:'center',
       alignItems:'center',
-      justifyContent:'flex-start',
+      flexDirection:'row',
       maxHeight:100,
-      width:'100%',
-      backgroundColor:'#4980b8',
+      backgroundColor:'#3c6996',
     },
-    social:{
-      margin:32,
-      flex:1,
-      alignItems:'center',
-      justifyContent:'space-between',
-      flexDirection: 'row',
-    }
   });
   
 
