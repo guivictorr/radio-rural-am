@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image} from 'react-native';
 import Player from './src/components/Player'
+import Buttons from './src/components/Buttons'
 
 const App = () => {
   
@@ -14,7 +15,7 @@ const App = () => {
           source={{ uri: logoUri }}
           style={styles.radioLogo}
         />
-
+        <Buttons/>
         <Player/>
     </View>
 
