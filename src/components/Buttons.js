@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import React from 'react';
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import { Audio } from 'expo-av';
-import { Fontisto } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'; 
 
-class Buttons extends Component{
-    render(){ 
+const Buttons = () => { 
         //'http://143.208.11.104:8606/stream'
         // Radio 24h 'https://shout12.crossradio.com.br:18002/stream'
 
@@ -20,8 +19,18 @@ class Buttons extends Component{
           }
         }
 
-        soundObject.loadAsync(radioStatus.radioUri, radioStatus.startPlaying);
-        Audio.setAudioModeAsync(radioStatus.initialStatus);      
+        const { radioUri, startPlaying, initialStatus } = radioStatus
+
+        async function loadRadio(){
+          try{
+            await soundObject.loadAsync(radioUri, startPlaying)
+          }
+          catch{
+            alert('Rádio fora do ar')
+          }
+        } loadRadio()
+
+        Audio.setAudioModeAsync(initialStatus);      
 
         function playRadio() {
           if(radioStatus.isPlaying === true){
@@ -34,35 +43,32 @@ class Buttons extends Component{
         }
 
         return(
-        <View style={styles.playButtons}>
-          <TouchableOpacity onPress={playRadio}  style={styles.playButton}>
-            <Fontisto style={styles.playIcons} name='play' size={32} color='white'/>
-            <Fontisto style={styles.playIcons} name='pause' size={32} color='white'/>
-          </TouchableOpacity>
-        </View>
-
-        
+          <View style={styles.viewButton}>
+            <TouchableOpacity onPress={playRadio}  style={styles.playButton}>
+              <AntDesign name="play" size={64} color="white" />
+            </TouchableOpacity> 
+          </View>
     )}
-}
 
 const styles = StyleSheet.create({
-    playButtons:{
-      flex:1,
-      justifyContent:'flex-end',
-  },
     playButton:{
         justifyContent:'center',
         flexDirection:'row',
         padding: 16,
-        backgroundColor:'#4980b8',
-        width:'100%'
+        maxWidth:100,
     },
-
-    playIcons:{
-      margin:8,
-    },
-
-    
+    viewButton:{
+      alignItems:'center',
+      justifyContent:'center',
+      backgroundColor:'#3D78B3',
+      width:450,
+      height:120,
+    }
   });
 
-module.exports = Buttons
+export default Buttons
+
+/*
+<AntDesign name="play" size={64} color="white" />
+<AntDesign name="pausecircle" size={64} color="white" />
+*/

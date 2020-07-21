@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "radiotest",
-    "slug": "radiotest",
+    "name": "Rádio Rural AM",
+    "slug": "radiorural",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#508bc7"
+      "backgroundColor": "#36699d"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,6 +21,13 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.radiorural.radioruralam",
+      "adaptiveIcon":{
+        "backgroundColor":"#36699d",
+        "foregroundImage":"./assets/icon.png"
+      }
     }
   }
 }
