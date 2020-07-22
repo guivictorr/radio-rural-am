@@ -11,7 +11,7 @@ const Buttons = () => {
 
         const radioStatus = {
           radioUri: { uri: 'http://143.208.11.104:8606/stream' },
-          startPlaying: { shouldPlay: true },
+          startPlaying: { shouldPlay: false },
           isPlaying: true,
           initialStatus: {
             staysActiveInBackground: true,
@@ -51,18 +51,14 @@ const Buttons = () => {
     )}
 
 const styles = StyleSheet.create({
-    playButton:{
-        justifyContent:'center',
-        flexDirection:'row',
-        padding: 16,
-        maxWidth:100,
-    },
     viewButton:{
+      flex:1,
       alignItems:'center',
       justifyContent:'center',
       backgroundColor:'#3D78B3',
       width:450,
-      height:120,
+      height:110,
+      
     }
   });
 
