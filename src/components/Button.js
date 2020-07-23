@@ -3,11 +3,9 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import { Audio } from 'expo-av';
 import { MaterialIcons } from '@expo/vector-icons'; 
 
-//'http://143.208.11.104:8606/stream'
-// Radio 24h 'https://shout12.crossradio.com.br:18002/stream'
 const radio = new Audio.Sound()
 const radioStatus = {
-  radioUrl: { uri: 'https://shout12.crossradio.com.br:18002/stream' },
+  radioUrl: { uri: 'http://143.208.11.104:8606/stream' },
   startPlaying: { shouldPlay: true },
   initialStatus: {
     staysActiveInBackground: true,
@@ -23,7 +21,7 @@ const loadRadio = () => {
 }
 loadRadio()
 
-const Buttons = () => { 
+const Button = () => { 
         const [isPlaying, setIsPlaying] = useState(true);
        
         function radioCommands(){
@@ -58,5 +56,5 @@ const styles = StyleSheet.create({
     }
   });
 
-export default Buttons
+export default Button
 

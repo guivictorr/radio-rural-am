@@ -1,11 +1,11 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Image} from 'react-native';
-import Social from './Social'
-import Buttons from './Buttons'
 
-const backgroundImage = require('../../assets/background.jpg')
-const radioLogo = require('../../assets/radiologo.png')
+import Social from '../../components/Social'
+import Buttons from '../../components/Button'
+const backgroundImage = require('../../../assets/background.jpg')
+const radioLogo = require('../../../assets/radiologo.png')
 
 const Home = () => {
     return (
