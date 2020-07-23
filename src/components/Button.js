@@ -13,11 +13,15 @@ const radioStatus = {
   },
 }
 
-const loadRadio = () => {
+const loadRadio = async () => {
     const { radioUrl, initialStatus, startPlaying} = radioStatus
 
-    Audio.setAudioModeAsync(initialStatus);   
-    radio.loadAsync(radioUrl, startPlaying)
+    try{
+    Audio.setAudioModeAsync(initialStatus); 
+    await radio.loadAsync(radioUrl, startPlaying)
+    }catch{
+      alert('Rádio fora do ar. 😢')
+    }
 }
 loadRadio()
 
