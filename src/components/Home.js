@@ -4,21 +4,21 @@ import { StyleSheet, View, Image} from 'react-native';
 import Social from './Social'
 import Buttons from './Buttons'
 
-const backgroundUri = {uri: 'https://images.unsplash.com/photo-1483000805330-4eaf0a0d82da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'}
+const backgroundImage = require('../../assets/background.jpg')
+const radioLogo = require('../../assets/radiologo.png')
 
 const Home = () => {
     return (
       <View style={styles.container}>
         <StatusBar style="inverted" />
-        <Image style={styles.backgroundImage} source={backgroundUri}/>      
-        <Image style={styles.radioLogo} source={require('../../assets/radiologo.png')}/>
+        <Image style={styles.backgroundImage} source={backgroundImage}/>      
+        <Image style={styles.radioLogo} source={radioLogo}/>
 
-              <View style={styles.bottomView}>
-                <Social/>
-                <Buttons/>
-              </View>
-      </View>
-      
+          <View style={styles.bottomView}>
+            <Social/>
+            <Buttons/>
+          </View>
+        </View>
     )};
   
   const styles = StyleSheet.create({
@@ -41,7 +41,6 @@ const Home = () => {
     bottomView:{
       position:'absolute',
       bottom:0,
-
     }
   });
   
