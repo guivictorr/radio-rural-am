@@ -10,7 +10,7 @@ const radioLogo = require('../../../assets/radiologo.png')
 const Home = () => {
     return (
       <View style={styles.container}>
-        <StatusBar style="inverted" />
+        <StatusBar style="light" />
         <Image style={styles.backgroundImage} source={backgroundImage}/>      
         <Image style={styles.radioLogo} source={radioLogo}/>
 
