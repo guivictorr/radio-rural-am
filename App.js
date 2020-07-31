@@ -15,12 +15,9 @@ const App = () => {
         name="Home" 
         component={Home}
         options={{
-          title:'Rádio Rural AM',
-          headerStyle:{
-            backgroundColor:'#36699d'
-          },
-          headerTintColor:'#fff'
+          headerShown: false,
         }}
+        
         />
         <Stack.Screen 
         name="News" 
