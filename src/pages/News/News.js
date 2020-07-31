@@ -1,103 +1,109 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Image, FlatList, Text, TouchableOpacity, ScrollView} from 'react-native';
+import { StyleSheet, View, SafeAreaView, Image, FlatList, Text, TouchableOpacity } from 'react-native';
 import * as Linking from 'expo-linking';
+import api from '../../services/api'
 
-const backgroundImage = require('../../../assets/backgroundNews.jpg')
-const newsUrl =   'https://newsapi.org/v2/top-headlines?sources=globo&apiKey=324a7c799b964d7f8d96ac5916c43ca9'
+const News = () => {
+  const [news, setNews] = useState([])
+  const backgroundImage = require('../../../assets/backgroundNews.jpg')
 
-export default class News extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      data:[]
+  useEffect(() => {
+    api.get('/').then(response => {
+      setNews(response.data.articles)
+    })
+  }, [])
+
+  const renderArticle = ({item}) => {
+    
+    const formatDate = (date) => {
+      const day = date.slice(8, 10)
+      const month = date.slice(5, 7)
+      const year = date.slice(0, 4)
+      return `${day}/${month}/${year}`
     }
-  }
 
-  loadNews = () => {
-    fetch(newsUrl)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res.articles || []
-        })
-      })
-  }
-
-  componentDidMount(){
-    this.loadNews();
-  }
-  
-  render(){
     return (
-      <View style={styles.container}>
-        <StatusBar style="light" />
-          <Image style={styles.backgroundImage} source={backgroundImage}/>
-              <FlatList
-                data={this.state.data}
-                renderItem={({item}) => (
-                  <ScrollView>
-                    <TouchableOpacity onPress={() => {Linking.openURL(item.url)}} style={styles.item} activeOpacity={0.6}>
-                      <Text style={styles.title}>{item.title}</Text>
-                      <Text style={styles.description}>{item.description}</Text>
-                      <Image source={{uri: item.urlToImage, width: '100%', height: 100}} style={styles.newsImage}/>
-                      <Text style={styles.date}>{`${item.publishedAt.slice(8,10)}/${item.publishedAt.slice(5,7)}/${item.publishedAt.slice(0,4)} - Fonte: G1`}</Text> 
-                    </TouchableOpacity>
-                  </ScrollView>
-                  
-                )}
-                keyExtractor={item => item.title}
-                showsVerticalScrollIndicator={false}
-              />       
+      <TouchableOpacity onPress={() => { Linking.openURL(item.url) }} style={styles.articleBox} activeOpacity={0.6}>
+
+        <Text style={styles.articleTitle}>{item.title}</Text>
+        {item.description === null ? <></> : <Text style={styles.articleDescription}>{item.description}</Text>}
+        {item.urlToImage === null ? <></> : <Image style={styles.articleImage} source={{ uri: item.urlToImage }}/>}
+
+        <View style={styles.articleFooter}>
+          <Text style={styles.footerText}>{`Fonte: ${item.source.name}`}</Text>
+          <Text style={styles.footerText}>{formatDate(item.publishedAt)}</Text>
         </View>
-    )}};
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#36699d',
-    },
+      </TouchableOpacity>
+    )
+  }
 
-    item: {
-      backgroundColor: '#36699d',      
-      padding: 20,
-      marginVertical: 14,
-      marginHorizontal: 32,
-      borderRadius:8,
-      height:'auto',
-      borderTopColor:'#fffd',
-      borderTopWidth:3,
-      
-    },
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar style="light" />
+      <Image style={styles.backgroundImage} source={backgroundImage} />
+      <FlatList
+        data={news}
+        keyExtractor={article => article.title}
+        renderItem={renderArticle}
+        showsVerticalScrollIndicator={false}
+      />
+    </SafeAreaView>
+  )
+};
 
-    title: {
-      fontSize: 16,
-      fontWeight:'bold',
-      color:'#fff'
-    },
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#36699d',
+  },
 
-    description:{
-      fontSize: 14,
-      color:'#fffc'
-    },
+  articleBox: {
+    backgroundColor: '#36699d',
+    padding: 16,
+    marginVertical: 14,
+    marginHorizontal: 32,
+    borderRadius: 8,
+    height: 'auto',
+    borderTopColor: '#fffd',
+    borderTopWidth: 3,
+  },
 
-    newsImage:{
-      borderRadius:8,
-      marginTop:12,
+  articleTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff'
+  },
 
-    },
+  articleDescription: {
+    fontSize: 14,
+    color: '#fffc'
+  },
 
-    date:{
-      color:'#fff7',
-      marginTop:12,
-    },
-    backgroundImage:{
-      width:'100%',
-      height: '100%',
-      opacity:0.2,
-      position:'absolute'
-    },
-  });
-  
+  articleImage: {
+    borderRadius: 8,
+    marginTop: 12,
+    width: '100%',
+    height: 100
+  },
+
+  articleFooter: {
+    marginTop: 6,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  footerText: {
+    color: '#fff5',
+  },
+
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    opacity: 0.2,
+    position: 'absolute'
+  },
+});
+
+export default News
 
 

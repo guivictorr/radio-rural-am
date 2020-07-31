@@ -4,10 +4,12 @@ import { StyleSheet, View, Image} from 'react-native';
 
 import Social from '../../components/Social'
 import Buttons from '../../components/Button'
-const backgroundImage = require('../../../assets/background.jpg')
-const radioLogo = require('../../../assets/radiologo.png')
+
 
 const Home = () => {
+  const backgroundImage = require('../../../assets/background.jpg')
+  const radioLogo = require('../../../assets/radiologo.png')
+  
     return (
       <View style={styles.container}>
         <StatusBar style="light" />
