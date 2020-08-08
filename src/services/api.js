@@ -1,7 +1,7 @@
-const axios = require('axios')
+const axios = require('axios');
 
 const api = axios.create({
-    baseURL: 'https://googlenews-api.herokuapp.com/'
+    baseURL: 'https://newsapi.org/v2/'
 })
 
-export default api;
+export default api
