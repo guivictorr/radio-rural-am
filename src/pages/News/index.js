@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, ImageBackground, FlatList } from 'react-native';
 
-import styles from './styles'
 import Article from '../../components/Article';
+
+import styles from './styles'
 import api from '../../services/api';
 
 const News = () => {
