@@ -16,8 +16,8 @@ const Article = (props) => {
   return (
     <TouchableOpacity onPress={() => { Linking.openURL(props.url) }} style={styles.articleBox} activeOpacity={0.6}>
       <Text style={styles.articleTitle}>{props.title}</Text>
-      {props.description && <Text style={styles.articleDescription}>{props.description}</Text>}
-      {props.image && <Image style={styles.articleImage} source={{ uri: props.image }}/>}
+      {props.description ? <Text style={styles.articleDescription}>{props.description}</Text> : null}
+      {props.image ? <Image style={styles.articleImage} source={{ uri: props.image }}/> : null}
 
       <View style={styles.articleFooter}>
         <Text style={styles.footerText}>{`Fonte: ${props.font}`}</Text>

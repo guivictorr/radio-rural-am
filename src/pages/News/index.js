@@ -4,18 +4,19 @@ import { SafeAreaView, ImageBackground, FlatList } from 'react-native';
 
 import Article from '../../components/Article';
 
+import backgroundImage from '../../../assets/backgroundNews.jpg'
+
 import styles from './styles'
 import api from '../../services/api';
 
 const News = () => {
   const [news, setNews] = useState([])
-  const backgroundImage = require('../../../assets/backgroundNews.jpg')
   
   useEffect(() => {
-    api.get('/top-headlines?country=br&apiKey=324a7c799b964d7f8d96ac5916c43ca9')
+    api.get(`/top-headlines?country=br&apiKey=324a7c799b964d7f8d96ac5916c43ca9`)
       .then(response => {
         const data = response.data
-        setNews(data.articles)
+        setNews([...data.articles])
       })
   }, [])
 
