@@ -1,29 +1,25 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Image } from 'react-native';
+import { View, Image, ImageBackground } from 'react-native';
 
 import Social from '../../components/Social/'
 import Buttons from '../../components/Button/'
 
+import backgroundImage from '../../../assets/background.png'
+import radioLogo from '../../../assets/radiologo.png'
+
 import styles from './styles'
 
 const Home = () => {
-  const backgroundImage = require('../../../assets/background.jpg')
-  const radioLogo = require('../../../assets/radiologo.png')
-  
     return (
-      <View style={styles.container}>
-        <StatusBar style="light" />
-        <Image style={styles.backgroundImage} source={backgroundImage}/>      
-        <Image style={styles.radioLogo} source={radioLogo}/>
+        <ImageBackground style={styles.backgroundImage} source={backgroundImage}>
+          <StatusBar style="light" />
+          <Image resizeMode="contain" style={styles.radioLogo} source={radioLogo}/>
 
-        <View style={styles.bottomView}>
-          <Social/>
-          <Buttons/>
-        </View>
-      </View>
+          <View style={styles.bottomView}>
+            <Social/>
+            <Buttons/>
+          </View>
+        </ImageBackground>      
     )};
-  
-  
-  
   export default Home;

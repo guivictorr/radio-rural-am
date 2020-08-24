@@ -4,7 +4,7 @@ import { SafeAreaView, ImageBackground, FlatList } from 'react-native';
 
 import Article from '../../components/Article';
 
-import backgroundImage from '../../../assets/backgroundNews.jpg'
+import backgroundImage from '../../../assets/backgroundNews.png'
 
 import styles from './styles'
 import api from '../../services/api';
@@ -32,16 +32,15 @@ const News = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="light" />
-      <ImageBackground style={styles.backgroundImage} source={backgroundImage} />
-      <FlatList
-        data={news}
-        keyExtractor={article => article.title}
-        renderItem={renderArticle}
-        showsVerticalScrollIndicator={false}
-      />
-    </SafeAreaView>
+      <ImageBackground style={styles.backgroundImage} source={backgroundImage}>
+        <StatusBar style="light" />
+        <FlatList
+          data={news}
+          keyExtractor={article => article.title}
+          renderItem={renderArticle}
+          showsVerticalScrollIndicator={false}
+        />
+      </ImageBackground>
   )
 };
 
