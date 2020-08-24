@@ -1,21 +1,15 @@
-const { StyleSheet } = require("react-native");
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems:'center',
-    justifyContent:'center',
-    backgroundColor: '#36699d',
-  },
   radioLogo:{
-    transform:[{scaleX:0.2}, {scaleY: 0.2}],
+    width: 300,
     marginBottom:250,
   },
   backgroundImage:{
     width:'100%',
     height: '100%',
-    opacity:0.2,
-    position:'absolute'
+    alignItems:'center',
+    justifyContent:'center',
   },
   bottomView:{
     position:'absolute',

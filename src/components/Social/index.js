@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { Fontisto, FontAwesome } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons'; 
 import * as Linking from 'expo-linking';
 import { useNavigation } from '@react-navigation/native';
 
@@ -21,15 +21,15 @@ const Social = () => {
   return(
     <View style={styles.socialView}>
       <TouchableOpacity style={styles.socialButton} onPress={() => {Linking.openURL(facebook)}}>
-        <Fontisto  name="facebook" size={48} color="white" />
+        <FontAwesome  name="facebook-official" size={48} color="white" />
       </TouchableOpacity>
             
       <TouchableOpacity style={styles.socialButton} onPress={() => {Linking.openURL(whatsapp)}}>
-        <Fontisto  name="whatsapp" size={48} color="white" />
+        <FontAwesome  name="whatsapp" size={48} color="white" />
       </TouchableOpacity>
   
       <TouchableOpacity style={styles.socialButton} onPress={() => {Linking.openURL(instagram)}}>
-        <Fontisto  name="instagram" size={48} color="white" />
+        <FontAwesome  name="instagram" size={48} color="white" />
       </TouchableOpacity>
   
       <TouchableOpacity style={styles.socialButton} onPress={() => {navigation.navigate('News')}}>
