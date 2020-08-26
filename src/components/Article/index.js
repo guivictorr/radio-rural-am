@@ -6,11 +6,16 @@ import styles from './styles'
 
 const Article = (props) => {
 
-  const formatDate = (date) => {
-    const day = date.slice(8, 10)
-    const month = date.slice(5, 7)
-    const year = date.slice(0, 4)
-    return `${day}/${month}/${year}`
+  function formatDate(date) {
+    let dateArr = date.split('T')[0].split('-', 3)
+
+    let year = dateArr[0]
+    let month = dateArr[1]
+    let day = dateArr[2]
+
+    let formatedDate = `${day}/${month}/${year}`
+    
+    return formatedDate
   }
 
   return (
