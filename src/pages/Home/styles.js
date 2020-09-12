@@ -14,7 +14,12 @@ const styles = StyleSheet.create({
   bottomView:{
     position:'absolute',
     bottom:0,
-  }
+  },
+  socialView:{
+    flexDirection:'row',
+    marginBottom: 34,
+    marginHorizontal:54,
+  },
 });
 
 export default styles

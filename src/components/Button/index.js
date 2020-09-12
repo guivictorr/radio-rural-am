@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import { Audio } from 'expo-av';
 import { MaterialIcons } from '@expo/vector-icons'; 
 
@@ -22,8 +22,8 @@ const Button = () => {
 
   const { radioUrl, initialStatus, startPlaying} = radioStatus
 
-  const loadRadio = async () => {
-    if (isLoaded === false) {
+  async function loadRadio(){
+    if (!isLoaded) {
       try{
         await radio.loadAsync(radioUrl, startPlaying)
         Audio.setAudioModeAsync(initialStatus);
@@ -34,10 +34,12 @@ const Button = () => {
     }
   }
 
-  loadRadio()
+  useEffect(() => {
+    loadRadio()
+  }, [])
        
-  const radioCommands = () => {
-    if(isPlaying === true){
+  function radioCommands(){
+    if(isPlaying){
       radio.pauseAsync()
       setIsPlaying(!isPlaying)
     }else{
@@ -48,9 +50,9 @@ const Button = () => {
 
   return (
     <View style={styles.viewButton}>
-      <TouchableOpacity onPress={radioCommands}  style={styles.playButton}>
+      <TouchableWithoutFeedback onPress={radioCommands}  style={styles.playButton}>
         <MaterialIcons name={isPlaying ? 'pause-circle-filled' : 'play-circle-filled'} size={84} color="white" />
-      </TouchableOpacity> 
+      </TouchableWithoutFeedback> 
     </View>
   )}
 

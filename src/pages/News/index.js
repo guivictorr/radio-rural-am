@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, ImageBackground, FlatList } from 'react-native';
+import { ImageBackground, FlatList } from 'react-native';
 
 import Article from '../../components/Article';
 
@@ -11,16 +10,18 @@ import api from '../../services/api';
 
 const News = () => {
   const [news, setNews] = useState([])
+
+  async function getNews(){
+    const response = await api.get(`/top-headlines?country=br&apiKey=324a7c799b964d7f8d96ac5916c43ca9`)
+    const articles = response.data.articles
+    setNews(articles)
+  }
   
   useEffect(() => {
-    api.get(`/top-headlines?country=br&apiKey=324a7c799b964d7f8d96ac5916c43ca9`)
-      .then(response => {
-        const data = response.data
-        setNews([...data.articles])
-      })
+    getNews()
   }, [])
 
-  const renderArticle = ({item}) => { 
+  function renderArticle ({item}){ 
     return <Article 
       url={item.url} 
       title={item.title}
@@ -32,8 +33,10 @@ const News = () => {
   }
 
   return (
-      <ImageBackground style={styles.backgroundImage} source={backgroundImage}>
-        <StatusBar style="light" />
+      <ImageBackground 
+        style={styles.backgroundImage} 
+        source={backgroundImage}
+      >
         <FlatList
           data={news}
           keyExtractor={article => article.title}
