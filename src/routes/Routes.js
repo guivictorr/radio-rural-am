@@ -8,27 +8,27 @@ const Stack = createStackNavigator();
 
 const Routes = () => {
   return (
-      <Stack.Navigator>
-        <Stack.Screen 
-          name="Home" 
-          component={Home}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen 
-          name="News" 
-          component={News}
-          options={{
-            title:'Notícias',
-            headerStyle:{
-              backgroundColor:'#36699d'
-            },
-            headerTintColor:'#fff'
-          }}
-        />
-      </Stack.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="News"
+        component={News}
+        options={{
+          title: 'Notícias',
+          headerStyle: {
+            backgroundColor: '#36699d',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+    </Stack.Navigator>
   );
-}
+};
 
 export default Routes;

@@ -1,4 +1,4 @@
-const { StyleSheet } = require("react-native");
+const { StyleSheet } = require('react-native');
 
 const styles = StyleSheet.create({
   articleBox: {
@@ -15,19 +15,19 @@ const styles = StyleSheet.create({
   articleTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#fff'
+    color: '#fff',
   },
 
   articleDescription: {
     fontSize: 14,
-    color: '#fffc'
+    color: '#fffc',
   },
 
   articleImage: {
     borderRadius: 8,
     marginTop: 12,
     width: '100%',
-    height: 100
+    height: 100,
   },
 
   articleFooter: {
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles
+export default styles;
